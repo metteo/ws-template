@@ -1,0 +1,92 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>io.metteo.github.ws</groupId>
+		<artifactId>ws-template</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<groupId>io.metteo.github.ws.ws-template</groupId>
+	<artifactId>service</artifactId>
+	<name>WebService Service</name>
+	<packaging>war</packaging>
+
+	<dependencies>
+		<dependency>
+			<groupId>io.metteo.github.ws.ws-template</groupId>
+			<artifactId>client</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.1.1</version>
+				<configuration>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<!-- setup corresponding executables on win/*nix -->
+	<profiles>
+		<profile>
+			<id>wsgen</id>
+
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>jaxws-maven-plugin</artifactId>
+						<version>2.4.1</version>
+						<executions>
+							<execution>
+								<id>wsgen-from-jdk</id>
+								<goals>
+									<goal>wsgen</goal>
+								</goals>
+								<configuration>
+									<executable>${tool.wsgen}</executable>
+									<sei>io.github.metteo.ws.UserEndpointImpl</sei>
+									<genWsdl>true</genWsdl>
+									<resourceDestDir>${project.basedir}/../client/src/main/resources/META-INF/wsdl</resourceDestDir>
+									<sourceDestDir>${project.build.directory}/ignore/wsgen</sourceDestDir>
+									<xnocompile>true</xnocompile>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+		<profile>
+			<id>win</id>
+			<activation>
+				<os>
+					<family>windows</family>
+				</os>
+			</activation>
+			<properties>
+				<tool.wsgen>${java.home}/../bin/wsgen.exe</tool.wsgen>
+				<tool.wsimport>${java.home}/../bin/wsimport.exe</tool.wsimport>
+			</properties>
+		</profile>
+		<profile>
+			<id>nix</id>
+			<activation>
+				<os>
+					<family>!windows</family>
+				</os>
+			</activation>
+			<properties>
+				<tool.wsgen>${java.home}/../bin/wsgen</tool.wsgen>
+				<tool.wsimport>${java.home}/../bin/wsimport</tool.wsimport>
+			</properties>
+		</profile>
+	</profiles>
+</project>

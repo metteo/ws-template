@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" targetNamespace="http://metteo.github.io/ws/user" xmlns:tns="http://metteo.github.io/ws/user" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="UserFault" nillable="true" type="tns:userFaultDetails"/>
+
+  <xs:element name="createUser" type="tns:createUser"/>
+
+  <xs:element name="createUserResponse" type="tns:createUserResponse"/>
+
+  <xs:element name="deleteUser" type="tns:deleteUser"/>
+
+  <xs:element name="deleteUserResponse" type="tns:deleteUserResponse"/>
+
+  <xs:element name="findAllUsers" type="tns:findAllUsers"/>
+
+  <xs:element name="findAllUsersResponse" type="tns:findAllUsersResponse"/>
+
+  <xs:element name="findUser" type="tns:findUser"/>
+
+  <xs:element name="findUserResponse" type="tns:findUserResponse"/>
+
+  <xs:element name="updateUser" type="tns:updateUser"/>
+
+  <xs:element name="updateUserResponse" type="tns:updateUserResponse"/>
+
+  <xs:complexType name="createUser">
+    <xs:sequence>
+      <xs:element name="user" type="tns:user" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="user">
+    <xs:sequence>
+      <xs:element name="id" type="xs:long" minOccurs="0"/>
+      <xs:element name="name" type="xs:string" minOccurs="0"/>
+      <xs:element name="state" type="tns:state" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="createUserResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:user" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="userFaultDetails">
+    <xs:sequence>
+      <xs:element name="code" type="xs:int"/>
+      <xs:element name="message" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="updateUser">
+    <xs:sequence>
+      <xs:element name="user" type="tns:user" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="updateUserResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:user" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="findAllUsers">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="findAllUsersResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:user" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="deleteUser">
+    <xs:sequence>
+      <xs:element name="user" type="tns:user" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="deleteUserResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:user" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="findUser">
+    <xs:sequence>
+      <xs:element name="id" type="xs:long"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="findUserResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:user" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="state">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ENABLED"/>
+      <xs:enumeration value="DISABLED"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>
+
