@@ -5,19 +5,19 @@ import java.io.Serializable;
 import javax.xml.bind.annotation.XmlType;
 
 @XmlType
-public class UserFaultDetails implements Serializable {
+public class UserFaultInfo implements Serializable {
 
 	private static final long serialVersionUID = 2837381651976887654L;
 	
-	public static final String NAME = "io.github.metteo.ws.UserFaultDetails";
+	public static final String NAME = "io.github.metteo.ws.UserFaultInfo";
 
 	private int code;
 
 	private String message;
 	
-	public UserFaultDetails() {}
+	public UserFaultInfo() {}
 	
-	public UserFaultDetails(int code, String message) {
+	public UserFaultInfo(int code, String message) {
 		this.code = code;
 		this.message = message;
 	}
@@ -55,7 +55,7 @@ public class UserFaultDetails implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		UserFaultDetails other = (UserFaultDetails) obj;
+		UserFaultInfo other = (UserFaultInfo) obj;
 		if (code != other.code)
 			return false;
 		if (message == null) {
@@ -68,6 +68,6 @@ public class UserFaultDetails implements Serializable {
 
 	@Override
 	public String toString() {
-		return "UserFaultBean [code=" + code + ", message=" + message + "]";
+		return "UserFaultInfo [code=" + code + ", message=" + message + "]";
 	}
 }

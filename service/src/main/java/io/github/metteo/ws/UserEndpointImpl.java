@@ -29,13 +29,13 @@ public class UserEndpointImpl implements UserEndpoint {
 	private Map<Long, User> mDatabase = new ConcurrentHashMap<>();
 
 	@Override
-	public User createUser(User user) throws UserFault {
+	public User createUser(User user) throws UserFaultException {
 		assertUser(user);
 		
 		if (user.id == null) {
 			user.id = mIdGenerator.addAndGet(1);
 		} else if (mDatabase.containsKey(user.id)) {
-			throw new UserFault(new UserFaultDetails(2, "User with id=" + user.id + " already exists"));
+			throw new UserFaultException(new UserFaultInfo(2, "User with id=" + user.id + " already exists"));
 		}
 
 		mDatabase.put(user.id, user);
@@ -43,24 +43,24 @@ public class UserEndpointImpl implements UserEndpoint {
 		return user;
 	}
 
-	private void assertUser(User user) throws UserFault {
+	private void assertUser(User user) throws UserFaultException {
 		if (user == null) {
-			throw new UserFault(new UserFaultDetails(1, "Cannot create null user"));
+			throw new UserFaultException(new UserFaultInfo(1, "Cannot create null user"));
 		}
 	}
 
 	@Override
-	public User findUser(long id) throws UserFault {
+	public User findUser(long id) throws UserFaultException {
 		return mDatabase.get(id);
 	}
 
 	@Override
-	public List<User> findAllUsers() throws UserFault {
+	public List<User> findAllUsers() throws UserFaultException {
 		return new ArrayList<>(mDatabase.values());
 	}
 
 	@Override
-	public User updateUser(User user) throws UserFault {
+	public User updateUser(User user) throws UserFaultException {
 		assertUser(user);
 		
 		if (user.id == null) {
@@ -73,7 +73,7 @@ public class UserEndpointImpl implements UserEndpoint {
 	}
 
 	@Override
-	public User deleteUser(User user) throws UserFault {
+	public User deleteUser(User user) throws UserFaultException {
 		assertUser(user);
 		
 		if (user.id == null) {

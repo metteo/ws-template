@@ -5,12 +5,12 @@ import javax.xml.ws.BindingProvider;
 import io.github.metteo.ws.State;
 import io.github.metteo.ws.User;
 import io.github.metteo.ws.UserEndpoint;
-import io.github.metteo.ws.UserFault;
+import io.github.metteo.ws.UserFaultException;
 import io.github.metteo.ws.UserService;
 
 public class UserApp {
 
-	public static void main(String[] args) throws UserFault {
+	public static void main(String[] args) throws UserFaultException {
 		UserService userService = new UserService();
 		UserEndpoint userEndpoint = userService.getPort();
 		BindingProvider bindingProvider = (BindingProvider) userEndpoint;

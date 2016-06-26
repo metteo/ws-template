@@ -8,7 +8,6 @@ import javax.jws.WebResult;
 import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
 import javax.xml.ws.Action;
-import javax.xml.ws.BindingProvider;
 
 @SOAPBinding
 @WebService(targetNamespace=UserService.SCHEMA_NAMESPACE)
@@ -19,65 +18,65 @@ public interface UserEndpoint {
 	 * 
 	 * @param user
 	 * @return
-	 * @throws UserFault
+	 * @throws UserFaultException
 	 */
 	@WebMethod
 	@WebResult
 	@Action
 	User createUser(
 			@WebParam(name = "user") User user
-	) throws UserFault;
+	) throws UserFaultException;
 	
 	/**
 	 * Returns a user with a given id
 	 * 
 	 * @param id
 	 * @return
-	 * @throws UserFault
+	 * @throws UserFaultException
 	 */
 	@WebMethod
 	@WebResult
 	@Action
 	User findUser(
 			@WebParam(name = "id") long id
-	) throws UserFault;
+	) throws UserFaultException;
 	
 	/**
 	 * Returns all users
 	 * 
 	 * @return
-	 * @throws UserFault
+	 * @throws UserFaultException
 	 */
 	@WebMethod
 	@WebResult
 	@Action
-	List<User> findAllUsers() throws UserFault;
+	List<User> findAllUsers() throws UserFaultException;
 	
 	/**
 	 * Updates the user
 	 * 
 	 * @param user
 	 * @return
-	 * @throws UserFault
+	 * @throws UserFaultException
 	 */
 	@WebMethod
 	@WebResult
 	@Action
 	User updateUser(
 			@WebParam(name = "user") User user
-	) throws UserFault;
+	) throws UserFaultException;
 	
 	/**
 	 * Deletes the user
 	 * @param user
 	 * @return
-	 * @throws UserFault
+	 * @throws UserFaultException
 	 */
 	@WebMethod
 	@WebResult
 	@Action
 	User deleteUser(
 			@WebParam(name = "user") User user
-	) throws UserFault;
+	) throws UserFaultException;
 	
 }

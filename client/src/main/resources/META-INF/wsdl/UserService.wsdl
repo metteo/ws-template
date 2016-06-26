@@ -12,8 +12,8 @@
   <message name="createUserResponse">
     <part name="parameters" element="tns:createUserResponse"/>
   </message>
-  <message name="UserFault">
-    <part name="fault" element="tns:UserFault"/>
+  <message name="UserFaultException">
+    <part name="fault" element="tns:UserFaultException"/>
   </message>
   <message name="findUser">
     <part name="parameters" element="tns:findUser"/>
@@ -43,27 +43,27 @@
     <operation name="createUser">
       <input wsam:Action="http://metteo.github.io/ws/user/UserEndpoint/createUserRequest" message="tns:createUser"/>
       <output wsam:Action="http://metteo.github.io/ws/user/UserEndpoint/createUserResponse" message="tns:createUserResponse"/>
-      <fault message="tns:UserFault" name="UserFault" wsam:Action="http://metteo.github.io/ws/user/UserEndpoint/createUser/Fault/UserFault"/>
+      <fault message="tns:UserFaultException" name="UserFaultException" wsam:Action="http://metteo.github.io/ws/user/UserEndpoint/createUser/Fault/UserFaultException"/>
     </operation>
     <operation name="findUser">
       <input wsam:Action="http://metteo.github.io/ws/user/UserEndpoint/findUserRequest" message="tns:findUser"/>
       <output wsam:Action="http://metteo.github.io/ws/user/UserEndpoint/findUserResponse" message="tns:findUserResponse"/>
-      <fault message="tns:UserFault" name="UserFault" wsam:Action="http://metteo.github.io/ws/user/UserEndpoint/findUser/Fault/UserFault"/>
+      <fault message="tns:UserFaultException" name="UserFaultException" wsam:Action="http://metteo.github.io/ws/user/UserEndpoint/findUser/Fault/UserFaultException"/>
     </operation>
     <operation name="findAllUsers">
       <input wsam:Action="http://metteo.github.io/ws/user/UserEndpoint/findAllUsersRequest" message="tns:findAllUsers"/>
       <output wsam:Action="http://metteo.github.io/ws/user/UserEndpoint/findAllUsersResponse" message="tns:findAllUsersResponse"/>
-      <fault message="tns:UserFault" name="UserFault" wsam:Action="http://metteo.github.io/ws/user/UserEndpoint/findAllUsers/Fault/UserFault"/>
+      <fault message="tns:UserFaultException" name="UserFaultException" wsam:Action="http://metteo.github.io/ws/user/UserEndpoint/findAllUsers/Fault/UserFaultException"/>
     </operation>
     <operation name="updateUser">
       <input wsam:Action="http://metteo.github.io/ws/user/UserEndpoint/updateUserRequest" message="tns:updateUser"/>
       <output wsam:Action="http://metteo.github.io/ws/user/UserEndpoint/updateUserResponse" message="tns:updateUserResponse"/>
-      <fault message="tns:UserFault" name="UserFault" wsam:Action="http://metteo.github.io/ws/user/UserEndpoint/updateUser/Fault/UserFault"/>
+      <fault message="tns:UserFaultException" name="UserFaultException" wsam:Action="http://metteo.github.io/ws/user/UserEndpoint/updateUser/Fault/UserFaultException"/>
     </operation>
     <operation name="deleteUser">
       <input wsam:Action="http://metteo.github.io/ws/user/UserEndpoint/deleteUserRequest" message="tns:deleteUser"/>
       <output wsam:Action="http://metteo.github.io/ws/user/UserEndpoint/deleteUserResponse" message="tns:deleteUserResponse"/>
-      <fault message="tns:UserFault" name="UserFault" wsam:Action="http://metteo.github.io/ws/user/UserEndpoint/deleteUser/Fault/UserFault"/>
+      <fault message="tns:UserFaultException" name="UserFaultException" wsam:Action="http://metteo.github.io/ws/user/UserEndpoint/deleteUser/Fault/UserFaultException"/>
     </operation>
   </portType>
   <binding name="UserPortBinding" type="tns:UserEndpoint">
@@ -76,8 +76,8 @@
       <output>
         <soap:body use="literal"/>
       </output>
-      <fault name="UserFault">
-        <soap:fault name="UserFault" use="literal"/>
+      <fault name="UserFaultException">
+        <soap:fault name="UserFaultException" use="literal"/>
       </fault>
     </operation>
     <operation name="findUser">
@@ -88,8 +88,8 @@
       <output>
         <soap:body use="literal"/>
       </output>
-      <fault name="UserFault">
-        <soap:fault name="UserFault" use="literal"/>
+      <fault name="UserFaultException">
+        <soap:fault name="UserFaultException" use="literal"/>
       </fault>
     </operation>
     <operation name="findAllUsers">
@@ -100,8 +100,8 @@
       <output>
         <soap:body use="literal"/>
       </output>
-      <fault name="UserFault">
-        <soap:fault name="UserFault" use="literal"/>
+      <fault name="UserFaultException">
+        <soap:fault name="UserFaultException" use="literal"/>
       </fault>
     </operation>
     <operation name="updateUser">
@@ -112,8 +112,8 @@
       <output>
         <soap:body use="literal"/>
       </output>
-      <fault name="UserFault">
-        <soap:fault name="UserFault" use="literal"/>
+      <fault name="UserFaultException">
+        <soap:fault name="UserFaultException" use="literal"/>
       </fault>
     </operation>
     <operation name="deleteUser">
@@ -124,8 +124,8 @@
       <output>
         <soap:body use="literal"/>
       </output>
-      <fault name="UserFault">
-        <soap:fault name="UserFault" use="literal"/>
+      <fault name="UserFaultException">
+        <soap:fault name="UserFaultException" use="literal"/>
       </fault>
     </operation>
   </binding>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <xs:schema version="1.0" targetNamespace="http://metteo.github.io/ws/user" xmlns:tns="http://metteo.github.io/ws/user" xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
-  <xs:element name="UserFault" nillable="true" type="tns:userFaultDetails"/>
+  <xs:element name="UserFaultException" nillable="true" type="tns:userFaultInfo"/>
 
   <xs:element name="createUser" type="tns:createUser"/>
 
@@ -43,7 +43,7 @@
     </xs:sequence>
   </xs:complexType>
 
-  <xs:complexType name="userFaultDetails">
+  <xs:complexType name="userFaultInfo">
     <xs:sequence>
       <xs:element name="code" type="xs:int"/>
       <xs:element name="message" type="xs:string" minOccurs="0"/>
