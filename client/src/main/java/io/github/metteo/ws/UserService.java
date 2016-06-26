@@ -44,4 +44,9 @@ public class UserService extends Service {
     public UserEndpoint getPort() {
         return super.getPort(PORT_QNAME, UserEndpoint.class);
     }
+    
+    @WebEndpoint(name = PORT_NAME)
+    public UserEndpoint getPort(WebServiceFeature... features) {
+        return super.getPort(PORT_QNAME, UserEndpoint.class, features);
+    }
 }

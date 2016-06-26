@@ -45,7 +45,7 @@ public class UserEndpointImpl implements UserEndpoint {
 
 	private void assertUser(User user) throws UserFaultException {
 		if (user == null) {
-			throw new UserFaultException(new UserFaultInfo(1, "Cannot create null user"));
+			throw new UserFaultException(new UserFaultInfo(1, "User parameter cannot be null"));
 		}
 	}
 

@@ -1,5 +1,9 @@
 package app;
 
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import javax.xml.ws.BindingProvider;
 
 import io.github.metteo.ws.State;
@@ -9,6 +13,8 @@ import io.github.metteo.ws.UserFaultException;
 import io.github.metteo.ws.UserService;
 
 public class UserApp {
+	
+	private static final Logger logger = Logger.getLogger("UserApp");
 
 	public static void main(String[] args) throws UserFaultException {
 		UserService userService = new UserService();
@@ -18,27 +24,37 @@ public class UserApp {
 		String url = "http://localhost:8080/ws/" + UserService.SERVICE_NAME;
 		bindingProvider.getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, url);
 		
-		System.out.println(userEndpoint.findAllUsers());
+		logger.info("findAllUsers: " + userEndpoint.findAllUsers());
 		
 		User user = new User();
 		user.name = "John Doe";
 		user.state = State.ENABLED;
 		
-		System.out.println(user);
+		logger.info("newUser: " + user);
 		
 		user = userEndpoint.createUser(user);
 		
-		System.out.println(user);
+		logger.info("createdUser: " + user);
 		
 		user.state = State.DISABLED;
+		user.permissions = new ArrayList<>();
+		user.permissions.add("CREATE");
+		user.permissions.add("UPDATE");
 		
 		user = userEndpoint.updateUser(user);
 		
-		System.out.println(user);
+		logger.info("updatedUser: " + user);
 		
 		user = userEndpoint.deleteUser(user);
 		
-		System.out.println(userEndpoint.findAllUsers());
+		logger.info("findAllUsers: " + userEndpoint.findAllUsers());
+		
+		//trigger exception at the end
+		try {
+			userEndpoint.deleteUser(null);
+		} catch (UserFaultException e) {
+			logger.log(Level.SEVERE, "Error during delete: ", e);
+		}
 	}
 
 }
