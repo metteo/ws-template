@@ -11,6 +11,8 @@
 
   <xs:element name="deleteUserResponse" type="tns:deleteUserResponse"/>
 
+  <xs:element name="disableUser" type="tns:disableUser"/>
+
   <xs:element name="findAllUsers" type="tns:findAllUsers"/>
 
   <xs:element name="findAllUsersResponse" type="tns:findAllUsersResponse"/>
@@ -54,6 +56,12 @@
     <xs:sequence>
       <xs:element name="code" type="xs:int"/>
       <xs:element name="message" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="disableUser">
+    <xs:sequence>
+      <xs:element name="userId" type="xs:long" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
 

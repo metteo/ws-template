@@ -1,11 +1,46 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>io.metteo.github.ws</groupId>
-    <artifactId>ws-template</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-  </parent>
-  <groupId>io.metteo.github.ws.ws-template</groupId>
-  <artifactId>client</artifactId>
-  <name>WebService Client</name>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>io.metteo.github.ws</groupId>
+		<artifactId>ws-template</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<groupId>io.metteo.github.ws.ws-template</groupId>
+	<artifactId>client</artifactId>
+	<name>WebService Client</name>
+
+	<build>
+	
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+			</resource>
+			<resource>
+				<directory>src/jaxws/resources</directory>
+			</resource>
+		</resources>
+	
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<version>1.11</version>
+				<executions>
+					<execution>
+						<id>add-source</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>add-source</goal>
+						</goals>
+						<configuration>
+							<sources>
+								<source>src/jaxws/java</source>
+							</sources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 </project>

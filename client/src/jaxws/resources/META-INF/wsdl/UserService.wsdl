@@ -39,6 +39,9 @@
   <message name="deleteUserResponse">
     <part name="parameters" element="tns:deleteUserResponse"/>
   </message>
+  <message name="disableUser">
+    <part name="parameters" element="tns:disableUser"/>
+  </message>
   <portType name="UserEndpoint">
     <operation name="createUser">
       <input wsam:Action="http://metteo.github.io/ws/user/UserEndpoint/createUserRequest" message="tns:createUser"/>
@@ -64,6 +67,9 @@
       <input wsam:Action="http://metteo.github.io/ws/user/UserEndpoint/deleteUserRequest" message="tns:deleteUser"/>
       <output wsam:Action="http://metteo.github.io/ws/user/UserEndpoint/deleteUserResponse" message="tns:deleteUserResponse"/>
       <fault message="tns:UserFaultException" name="UserFaultException" wsam:Action="http://metteo.github.io/ws/user/UserEndpoint/deleteUser/Fault/UserFaultException"/>
+    </operation>
+    <operation name="disableUser">
+      <input wsam:Action="http://metteo.github.io/ws/user/UserEndpoint/disableUser" message="tns:disableUser"/>
     </operation>
   </portType>
   <binding name="UserPortBinding" type="tns:UserEndpoint">
@@ -127,6 +133,12 @@
       <fault name="UserFaultException">
         <soap:fault name="UserFaultException" use="literal"/>
       </fault>
+    </operation>
+    <operation name="disableUser">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
     </operation>
   </binding>
   <service name="UserService">

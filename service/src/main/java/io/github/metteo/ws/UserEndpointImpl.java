@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.annotation.Resource;
@@ -83,6 +84,26 @@ public class UserEndpointImpl implements UserEndpoint {
 		user = mDatabase.remove(user.id);
 		
 		return user;
+	}
+	
+	//not thread safe
+	@Override
+	public void disableUser(Long userId) {
+		try {
+			Thread.sleep(2000); // simulate long running operation
+		} catch (InterruptedException e) {
+			logger.log(Level.WARNING, "", e);
+		}
+		
+		logger.info("Disabled user " + userId);
+		
+		User user = mDatabase.get(userId);
+		if(user != null) {
+			user.state = State.DISABLED;
+			mDatabase.put(userId, user);
+		}
+		
+		
 	}
  
 	/**

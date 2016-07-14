@@ -53,8 +53,8 @@
 									<executable>${tool.wsgen}</executable>
 									<sei>io.github.metteo.ws.UserEndpointImpl</sei>
 									<genWsdl>true</genWsdl>
-									<resourceDestDir>${project.basedir}/../client/src/main/resources/META-INF/wsdl</resourceDestDir>
-									<sourceDestDir>${project.build.directory}/ignore/wsgen</sourceDestDir>
+									<sourceDestDir>${project.basedir}/../client/src/jaxws/java</sourceDestDir>
+									<resourceDestDir>${project.basedir}/../client/src/jaxws/resources/META-INF/wsdl</resourceDestDir>
 									<xnocompile>true</xnocompile>
 								</configuration>
 							</execution>

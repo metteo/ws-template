@@ -2,6 +2,7 @@ package io.github.metteo.ws;
 
 import java.util.List;
 
+import javax.jws.Oneway;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebResult;
@@ -78,5 +79,17 @@ public interface UserEndpoint {
 	User deleteUser(
 			@WebParam(name = "user") User user
 	) throws UserFaultException;
+	
+	/**
+	 * Sample one way method
+	 * @param user
+	 * @return
+	 * @throws UserFaultException
+	 */
+	@Oneway
+	@WebMethod
+	@WebResult
+	@Action
+	void disableUser(@WebParam(name = "userId") Long userId);
 	
 }

@@ -36,7 +36,6 @@ public class UserApp {
 		
 		logger.info("createdUser: " + user);
 		
-		user.state = State.DISABLED;
 		user.permissions = new ArrayList<>();
 		user.permissions.add("CREATE");
 		user.permissions.add("UPDATE");
@@ -45,9 +44,13 @@ public class UserApp {
 		
 		logger.info("updatedUser: " + user);
 		
+		userEndpoint.disableUser(user.id);
+		
+		logger.info("afterDisable: " + userEndpoint.findAllUsers());
+		
 		user = userEndpoint.deleteUser(user);
 		
-		logger.info("findAllUsers: " + userEndpoint.findAllUsers());
+		logger.info("afterDelete: " + userEndpoint.findAllUsers());
 		
 		//trigger exception at the end
 		try {
