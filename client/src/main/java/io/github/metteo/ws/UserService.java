@@ -49,4 +49,14 @@ public class UserService extends Service {
     public UserEndpoint getPort(WebServiceFeature... features) {
         return super.getPort(PORT_QNAME, UserEndpoint.class, features);
     }
+    
+    @WebEndpoint(name = PORT_NAME)
+    public UserEndpointAsync getAsyncPort() {
+        return super.getPort(PORT_QNAME, UserEndpointAsync.class);
+    }
+    
+    @WebEndpoint(name = PORT_NAME)
+    public UserEndpointAsync getAsyncPort(WebServiceFeature... features) {
+        return super.getPort(PORT_QNAME, UserEndpointAsync.class, features);
+    }
 }
