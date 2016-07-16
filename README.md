@@ -4,7 +4,8 @@ Shows how manually written endpoint interface and DTOs can be reused on both cli
 
 Pros:
  - save up on build time because there is no need to parse wsdl, generate client classes and compile them. In this case they are just compiled and could be versioned the same way as webservice interface.
- - sharing the same classes in server implementation and on clients allows finding usages of the interface in IDE (it's also possible with generated interface but it's different). It's also possible to do refactoring of the service interface and clients using it at the same time (during development time before given version of interface/wsdl is final).
+ - sharing the same classes in server implementation and on clients allows finding usages of the interface in IDE (it's also possible with generated one but it's separate). It's also possible to do refactoring of the service interface and clients using it at the same time (during development time before given version of interface/wsdl is final).
+ - interface related classes are nicely separated into own module/artifact. That should give a clear signal to developer that he should make the modifications carefully to not break backward compatibility.
  - hand written classes are nicer to use, they may include javadoc. The client jar might contain small utilities (but in general should not contain any bussiness logic - only WS entities and interfaces)
  - it's easier to make proxy apps that do some enriching on the request before passing it to actual webservice. The interface is shared so a proxy can just work on the entities and then call actual webservice without any converters between generated classes and the handwritten ones
  - DRY - even though classes from wsdl are generated they are equivalent so why not reuse what is already there when it's possible.
