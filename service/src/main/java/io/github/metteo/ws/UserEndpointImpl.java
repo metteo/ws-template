@@ -3,13 +3,19 @@ package io.github.metteo.ws;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import javax.jws.WebService;
+import javax.validation.ConstraintViolation;
+import javax.validation.Validation;
+import javax.validation.Validator;
+import javax.validation.ValidatorFactory;
 import javax.xml.ws.Endpoint;
 import javax.xml.ws.WebServiceContext;
 
@@ -26,8 +32,16 @@ public class UserEndpointImpl implements UserEndpoint {
 	@Resource
 	private WebServiceContext mContext;
 	
+	private Validator mValidator;
+	
 	private AtomicLong mIdGenerator = new AtomicLong();
 	private Map<Long, User> mDatabase = new ConcurrentHashMap<>();
+	
+	@PostConstruct
+	private void postConstruct() {
+        ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+        mValidator = factory.getValidator();
+	}
 
 	@Override
 	public User createUser(User user) throws UserFaultException {
@@ -48,6 +62,12 @@ public class UserEndpointImpl implements UserEndpoint {
 		if (user == null) {
 			throw new UserFaultException(new UserFaultInfo(1, "User parameter cannot be null"));
 		}
+ 
+        Set<ConstraintViolation<User>> violations = mValidator.validate(user);
+        
+        if(violations.size() > 0) {
+        	throw new UserFaultException(new UserFaultInfo(2, "" + violations.toString()));
+        }
 	}
 
 	@Override

@@ -17,6 +17,24 @@
 			<artifactId>client</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>5.2.4.Final</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<!-- Only for JavaSE: https://github.com/hibernate/hibernate-validator -->
+			<groupId>javax.el</groupId>
+			<artifactId>javax.el-api</artifactId>
+			<version>2.2.4</version>
+		</dependency>
+		<dependency>
+			<!-- Only for JavaSE: https://github.com/hibernate/hibernate-validator -->
+			<groupId>org.glassfish.web</groupId>
+			<artifactId>javax.el</artifactId>
+			<version>2.2.4</version>
+		</dependency>
 	</dependencies>
 
 	<build>

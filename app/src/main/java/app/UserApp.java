@@ -58,6 +58,13 @@ public class UserApp {
 		} catch (UserFaultException e) {
 			logger.log(Level.SEVERE, "Error during delete: ", e);
 		}
+		
+		//trigger validation exception
+		try {
+			userEndpoint.createUser(new User());
+		} catch (UserFaultException e) {
+			logger.log(Level.SEVERE, "Error during create: ", e);
+		}
 	}
 
 }
