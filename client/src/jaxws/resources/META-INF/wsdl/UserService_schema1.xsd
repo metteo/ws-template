@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<xs:schema version="1.0" targetNamespace="http://metteo.github.io/ws/user" xmlns:tns="http://metteo.github.io/ws/user" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema version="1.0" targetNamespace="http://metteo.github.io/ws/user" xmlns:tns="http://metteo.github.io/ws/user" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:usr="http://metteo.github.io/ws/user">
 
   <xs:element name="UserFaultException" nillable="true" type="tns:userFaultInfo"/>
 
@@ -36,6 +36,7 @@
       <xs:element name="id" type="xs:long" minOccurs="0"/>
       <xs:element name="name" type="xs:string" minOccurs="0"/>
       <xs:element name="state" type="tns:state" minOccurs="0"/>
+      <xs:element name="type" type="xs:string" minOccurs="0"/>
       <xs:element name="permissions" minOccurs="0">
         <xs:complexType>
           <xs:sequence>
@@ -115,6 +116,13 @@
     <xs:restriction base="xs:string">
       <xs:enumeration value="ENABLED"/>
       <xs:enumeration value="DISABLED"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="userType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="REGULAR"/>
+      <xs:enumeration value="POWER"/>
     </xs:restriction>
   </xs:simpleType>
 </xs:schema>

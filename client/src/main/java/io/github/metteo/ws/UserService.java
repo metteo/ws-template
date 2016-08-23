@@ -12,6 +12,7 @@ import javax.xml.ws.WebServiceFeature;
 public class UserService extends Service {
 	
 	public static final String SCHEMA_NAMESPACE="http://metteo.github.io/ws/user";
+	public static final String SCHEMA_PREFIX="usr";
 	
 	public static final String ENDPOINT_INTERFACE = "io.github.metteo.ws.UserEndpoint";
 	

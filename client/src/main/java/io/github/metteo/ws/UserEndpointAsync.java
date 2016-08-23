@@ -13,7 +13,7 @@ import javax.xml.ws.Response;
 import javax.xml.ws.ResponseWrapper;
 
 //Could be generated with annotation processor if main User endpoint is annotated with @GenerateAsync
-@WebService(targetNamespace=UserService.SCHEMA_NAMESPACE, portName=UserService.PORT_NAME)
+@WebService(targetNamespace=UserService.SCHEMA_NAMESPACE)
 public interface UserEndpointAsync extends UserEndpoint {
 	
 	//specified explicitly because defaults are derived from namespace and method name which are
