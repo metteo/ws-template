@@ -13,6 +13,8 @@ import javax.xml.ws.Action;
 @SOAPBinding
 @WebService(targetNamespace=UserService.SCHEMA_NAMESPACE)
 public interface UserEndpoint {
+	
+	//no constants allowed by wsgen
 
 	/**
 	 * Creates new user
