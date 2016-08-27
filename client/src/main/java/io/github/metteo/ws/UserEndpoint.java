@@ -11,7 +11,7 @@ import javax.jws.soap.SOAPBinding;
 import javax.xml.ws.Action;
 
 @SOAPBinding
-@WebService(targetNamespace=UserService.SCHEMA_NAMESPACE)
+@WebService(targetNamespace=UserConstants.SCHEMA_NAMESPACE)
 public interface UserEndpoint {
 	
 	//no constants allowed by wsgen

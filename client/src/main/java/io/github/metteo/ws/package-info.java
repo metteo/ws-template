@@ -1,9 +1,9 @@
 @XmlSchema(
-	namespace = UserService.SCHEMA_NAMESPACE,
+	namespace = UserConstants.SCHEMA_NAMESPACE,
 	
 	xmlns = @XmlNs(
-		namespaceURI = UserService.SCHEMA_NAMESPACE, 
-		prefix = UserService.SCHEMA_PREFIX
+		namespaceURI = UserConstants.SCHEMA_NAMESPACE, 
+		prefix = UserConstants.SCHEMA_PREFIX
 	)
 )
 package io.github.metteo.ws;

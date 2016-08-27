@@ -2,7 +2,7 @@ package io.github.metteo.ws;
 
 import javax.xml.ws.WebFault;
 
-@WebFault(targetNamespace = UserService.SCHEMA_NAMESPACE, faultBean=UserFaultInfo.NAME)
+@WebFault(targetNamespace = UserConstants.SCHEMA_NAMESPACE, faultBean=UserFaultInfo.NAME)
 public class UserFaultException extends Exception {
 
 	private static final long serialVersionUID = 7765080042856886265L;

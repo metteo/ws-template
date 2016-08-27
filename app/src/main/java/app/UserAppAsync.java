@@ -2,6 +2,7 @@ package app;
 
 import io.github.metteo.ws.State;
 import io.github.metteo.ws.User;
+import io.github.metteo.ws.UserConstants;
 import io.github.metteo.ws.UserEndpointAsync;
 import io.github.metteo.ws.UserFaultException;
 import io.github.metteo.ws.UserService;
@@ -25,7 +26,7 @@ public class UserAppAsync {
 		UserEndpointAsync userEndpoint = userService.getAsyncPort();
 		BindingProvider bindingProvider = (BindingProvider) userEndpoint;
 		
-		String url = "http://localhost:8080/ws/" + UserService.SERVICE_NAME;
+		String url = "http://localhost:8080/ws/" + UserConstants.SERVICE_NAME;
 		bindingProvider.getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, url);
 		
 		User user = new User();

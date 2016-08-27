@@ -8,6 +8,7 @@ import javax.xml.ws.BindingProvider;
 
 import io.github.metteo.ws.State;
 import io.github.metteo.ws.User;
+import io.github.metteo.ws.UserConstants;
 import io.github.metteo.ws.UserEndpoint;
 import io.github.metteo.ws.UserFaultException;
 import io.github.metteo.ws.UserService;
@@ -21,7 +22,7 @@ public class UserApp {
 		UserEndpoint userEndpoint = userService.getPort();
 		BindingProvider bindingProvider = (BindingProvider) userEndpoint;
 		
-		String url = "http://localhost:8080/ws/" + UserService.SERVICE_NAME;
+		String url = "http://localhost:8080/ws/" + UserConstants.SERVICE_NAME;
 		bindingProvider.getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, url);
 		
 		logger.info("findAllUsers: " + userEndpoint.findAllUsers());

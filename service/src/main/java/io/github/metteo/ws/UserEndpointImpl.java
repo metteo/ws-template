@@ -20,10 +20,10 @@ import javax.xml.ws.Endpoint;
 import javax.xml.ws.WebServiceContext;
 
 @WebService(
-	endpointInterface=UserService.ENDPOINT_INTERFACE,
-	serviceName=UserService.SERVICE_NAME, 
-	portName=UserService.PORT_NAME, 
-	targetNamespace= UserService.SCHEMA_NAMESPACE
+	endpointInterface=UserConstants.ENDPOINT_INTERFACE,
+	serviceName=UserConstants.SERVICE_NAME, 
+	portName=UserConstants.PORT_NAME, 
+	targetNamespace= UserConstants.SCHEMA_NAMESPACE
 )
 public class UserEndpointImpl implements UserEndpoint {
 	
@@ -133,6 +133,6 @@ public class UserEndpointImpl implements UserEndpoint {
 	public static void main(String[] args) {
 		logger.info("Publishing enpoint");
 		
-		Endpoint.publish("http://localhost:8080/ws/" + UserService.SERVICE_NAME, new UserEndpointImpl());
+		Endpoint.publish("http://localhost:8080/ws/" + UserConstants.SERVICE_NAME, new UserEndpointImpl());
 	}
 }
