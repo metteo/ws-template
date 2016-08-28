@@ -45,6 +45,17 @@ public class User {
 		
 		this.type = type.name();
 	}
+	
+	/**
+	 * Only to demonstrate how {@link XmlElementEnum} validator works
+	 * @param type
+	 * 
+	 * @deprecated use {@link #setType(UserType)}
+	 */
+	@Deprecated
+	public void setType(String type) {
+		this.type = type;
+	}
 
 	@Override
 	public String toString() {

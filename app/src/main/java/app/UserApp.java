@@ -62,7 +62,9 @@ public class UserApp {
 		
 		//trigger validation exception
 		try {
-			userEndpoint.createUser(new User());
+			User u = new User();
+			u.setType("NOT_FROM_ENUM");
+			userEndpoint.createUser(u);
 		} catch (UserFaultException e) {
 			logger.log(Level.SEVERE, "Error during create: ", e);
 		}
