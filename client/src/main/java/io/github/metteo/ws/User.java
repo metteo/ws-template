@@ -22,11 +22,17 @@ public class User {
 	@Size(min = 6, max = 20)
 	public String name;
 	
+	//enum + own schema type
 	public State state;
 	
+	//string ref but validated as enum
 	@XmlElement
 	@XmlElementEnum(UserType.class)
 	private String type;
+	
+	//enum but bound to string in xml schema (see package-info)
+	@XmlElement 
+	public Priority priority;
 	
 	@XmlElement(name = "permission")
 	@XmlElementWrapper
@@ -60,6 +66,8 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", name=" + name + ", state=" + state
-				+ ", type=" + type + ", permissions=" + permissions + "]";
+				+ ", type=" + type + ", priority=" + priority
+				+ ", permissions=" + permissions + "]";
 	}
+
 }

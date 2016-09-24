@@ -6,6 +6,7 @@ import java.util.logging.Logger;
 
 import javax.xml.ws.BindingProvider;
 
+import io.github.metteo.ws.Priority;
 import io.github.metteo.ws.State;
 import io.github.metteo.ws.User;
 import io.github.metteo.ws.UserConstants;
@@ -30,6 +31,7 @@ public class UserApp {
 		User user = new User();
 		user.name = "John Doe";
 		user.state = State.ENABLED;
+		user.priority = Priority.HIGH;
 		
 		logger.info("newUser: " + user);
 		
