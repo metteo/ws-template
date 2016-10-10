@@ -135,4 +135,14 @@ public class UserEndpointImpl implements UserEndpoint {
 		
 		Endpoint.publish("http://localhost:8080/ws/" + UserConstants.SERVICE_NAME, new UserEndpointImpl());
 	}
+	
+	@Override
+	public Request_1_0 echo_1_0(Request_1_0 request) {
+		return request;
+	}
+
+	@Override
+	public Request_2_0 echo_2_0(Request_2_0 request) {
+		return request;
+	}
 }

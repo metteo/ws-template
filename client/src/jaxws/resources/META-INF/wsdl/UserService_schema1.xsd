@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<xs:schema version="1.0" targetNamespace="http://metteo.github.io/ws/user" xmlns:tns="http://metteo.github.io/ws/user" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:usr="http://metteo.github.io/ws/user">
+<xs:schema version="1.0" targetNamespace="http://metteo.github.io/ws/user" xmlns:ns1="http://example.com/schema" xmlns:tns="http://metteo.github.io/ws/user" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:usr="http://metteo.github.io/ws/user">
+
+  <xs:import namespace="http://example.com/schema" schemaLocation="UserService_schema2.xsd"/>
 
   <xs:element name="UserFaultException" nillable="true" type="tns:userFaultInfo"/>
 
@@ -13,6 +15,14 @@
 
   <xs:element name="disableUser" type="tns:disableUser"/>
 
+  <xs:element name="echo_1_0" type="tns:echo_1_0"/>
+
+  <xs:element name="echo_1_0Response" type="tns:echo_1_0Response"/>
+
+  <xs:element name="echo_2_0" type="tns:echo_2_0"/>
+
+  <xs:element name="echo_2_0Response" type="tns:echo_2_0Response"/>
+
   <xs:element name="findAllUsers" type="tns:findAllUsers"/>
 
   <xs:element name="findAllUsersResponse" type="tns:findAllUsersResponse"/>
@@ -24,6 +34,24 @@
   <xs:element name="updateUser" type="tns:updateUser"/>
 
   <xs:element name="updateUserResponse" type="tns:updateUserResponse"/>
+
+  <xs:complexType name="echo_2_0">
+    <xs:sequence>
+      <xs:element name="request" type="tns:Request_2_0" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Request_2_0">
+    <xs:sequence>
+      <xs:element name="element" type="ns1:Element_2_0" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="echo_2_0Response">
+    <xs:sequence>
+      <xs:element name="return" type="tns:Request_2_0" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
 
   <xs:complexType name="createUser">
     <xs:sequence>
@@ -37,6 +65,7 @@
       <xs:element name="name" type="xs:string" minOccurs="0"/>
       <xs:element name="state" type="tns:state" minOccurs="0"/>
       <xs:element name="type" type="xs:string" minOccurs="0"/>
+      <xs:element name="priority" type="xs:string" minOccurs="0"/>
       <xs:element name="permissions" minOccurs="0">
         <xs:complexType>
           <xs:sequence>
@@ -57,6 +86,31 @@
     <xs:sequence>
       <xs:element name="code" type="xs:int"/>
       <xs:element name="message" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="echo_1_0">
+    <xs:sequence>
+      <xs:element name="request" type="tns:Request_1_0" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Request_1_0">
+    <xs:sequence>
+      <xs:element name="element" type="tns:Element_1_0" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Element_1_0">
+    <xs:sequence>
+      <xs:element name="value1" type="xs:string" minOccurs="0"/>
+      <xs:element name="value2" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="echo_1_0Response">
+    <xs:sequence>
+      <xs:element name="return" type="tns:Request_1_0" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
 
@@ -116,6 +170,13 @@
     <xs:restriction base="xs:string">
       <xs:enumeration value="ENABLED"/>
       <xs:enumeration value="DISABLED"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="priority">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="HIGH"/>
+      <xs:enumeration value="LOW"/>
     </xs:restriction>
   </xs:simpleType>
 

@@ -6,7 +6,10 @@ import java.util.logging.Logger;
 
 import javax.xml.ws.BindingProvider;
 
+import io.github.metteo.ws.Element_2_0;
 import io.github.metteo.ws.Priority;
+import io.github.metteo.ws.Request_1_0;
+import io.github.metteo.ws.Request_2_0;
 import io.github.metteo.ws.State;
 import io.github.metteo.ws.User;
 import io.github.metteo.ws.UserConstants;
@@ -70,6 +73,26 @@ public class UserApp {
 		} catch (UserFaultException e) {
 			logger.log(Level.SEVERE, "Error during create: ", e);
 		}
+		
+		//Compatibility using @XmlAdapter
+		
+		Element_2_0 el2 = new Element_2_0();
+		el2.value1 = "val1";
+		el2.value2 = "val2";
+		
+		Request_1_0 req1 = new Request_1_0();
+		req1.element = el2;
+		
+		Request_2_0 req2 = new Request_2_0();
+		req2.element = el2;
+
+		logger.info("Req1 before: " + req1);
+		req1 = userEndpoint.echo_1_0(req1);
+		logger.info("Req1 after: " + req1);
+		
+		logger.info("Req2 before: " + req2);
+		req2 = userEndpoint.echo_2_0(req2);
+		logger.info("Req2 after: " + req2);
 	}
 
 }

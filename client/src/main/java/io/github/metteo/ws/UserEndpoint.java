@@ -94,4 +94,17 @@ public interface UserEndpoint {
 	@Action
 	void disableUser(@WebParam(name = "userId") Long userId);
 	
+	@WebMethod
+	@WebResult
+	@Action
+	Request_1_0 echo_1_0(
+			@WebParam(name = "request") Request_1_0 request
+	);
+	
+	@WebMethod
+	@WebResult
+	@Action
+	Request_2_0 echo_2_0(
+			@WebParam(name = "request") Request_2_0 request
+	);
 }

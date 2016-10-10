@@ -5,6 +5,9 @@
     <xsd:schema>
       <xsd:import namespace="http://metteo.github.io/ws/user" schemaLocation="UserService_schema1.xsd"/>
     </xsd:schema>
+    <xsd:schema>
+      <xsd:import namespace="http://example.com/schema" schemaLocation="UserService_schema2.xsd"/>
+    </xsd:schema>
   </types>
   <message name="createUser">
     <part name="parameters" element="tns:createUser"/>
@@ -42,6 +45,18 @@
   <message name="disableUser">
     <part name="parameters" element="tns:disableUser"/>
   </message>
+  <message name="echo_1_0">
+    <part name="parameters" element="tns:echo_1_0"/>
+  </message>
+  <message name="echo_1_0Response">
+    <part name="parameters" element="tns:echo_1_0Response"/>
+  </message>
+  <message name="echo_2_0">
+    <part name="parameters" element="tns:echo_2_0"/>
+  </message>
+  <message name="echo_2_0Response">
+    <part name="parameters" element="tns:echo_2_0Response"/>
+  </message>
   <portType name="UserEndpoint">
     <operation name="createUser">
       <input wsam:Action="http://metteo.github.io/ws/user/UserEndpoint/createUserRequest" message="tns:createUser"/>
@@ -70,6 +85,14 @@
     </operation>
     <operation name="disableUser">
       <input wsam:Action="http://metteo.github.io/ws/user/UserEndpoint/disableUser" message="tns:disableUser"/>
+    </operation>
+    <operation name="echo_1_0">
+      <input wsam:Action="http://metteo.github.io/ws/user/UserEndpoint/echo_1_0Request" message="tns:echo_1_0"/>
+      <output wsam:Action="http://metteo.github.io/ws/user/UserEndpoint/echo_1_0Response" message="tns:echo_1_0Response"/>
+    </operation>
+    <operation name="echo_2_0">
+      <input wsam:Action="http://metteo.github.io/ws/user/UserEndpoint/echo_2_0Request" message="tns:echo_2_0"/>
+      <output wsam:Action="http://metteo.github.io/ws/user/UserEndpoint/echo_2_0Response" message="tns:echo_2_0Response"/>
     </operation>
   </portType>
   <binding name="UserPortBinding" type="tns:UserEndpoint">
@@ -139,6 +162,24 @@
       <input>
         <soap:body use="literal"/>
       </input>
+    </operation>
+    <operation name="echo_1_0">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="echo_2_0">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
     </operation>
   </binding>
   <service name="UserService">
